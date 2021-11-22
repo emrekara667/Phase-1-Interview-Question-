@@ -49,7 +49,7 @@ int validadation(char *id,char *Password,char *name)
 
     if (step == SQLITE_ROW) {
         printf("Login Succeeded\n");
-        sleep(2);
+        Sleep(2000);
         system("cls");
 
         strcpy(name,(char *)sqlite3_column_text(res, 0));

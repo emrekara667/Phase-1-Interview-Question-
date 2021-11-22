@@ -230,7 +230,7 @@ void showInvoiceList()
             }
             else{
                 printf("record not found\n");
-                sleep(2000);
+                Sleep(2000);
             }
             memset(input, 0, strlen(input));
             system("cls");
