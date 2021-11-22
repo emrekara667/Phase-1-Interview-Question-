@@ -4,10 +4,11 @@
 #include <unistd.h>
 #endif
 
+#include <curses.h>
 #include "appInvoice.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+//#include <conio.h>
 #include <string.h>
 #include <dirent.h>
 #include<locale.h>
@@ -25,15 +26,16 @@ void contentDisplay()
     di = opendir("."); //specify the directory name
     if (di)
     {
+         int a = strlen(dir->d_name); // file name+extension
         while ((dir = readdir(di)) != NULL)
         {
-            if(dir->d_namlen >= 4)
+            if(a >= 4)
             {
-                if (dir->d_name[dir->d_namlen-1] == 'v' && dir->d_name[dir->d_namlen-2] == 'n' && dir->d_name[dir->d_namlen-3] == 'i' && dir->d_name[dir->d_namlen-4] == '.')
+                if (dir->d_name[a-1] == 'v' && dir->d_name[a-2] == 'n' && dir->d_name[a-3] == 'i' && dir->d_name[a-4] == '.')
                 {
                     printf("%d - ",i);
                     int j;
-                    for (j = 0; j < dir->d_namlen-4; j++)
+                    for (j = 0; j < a-4; j++)
                     {
                         printf("%c",dir->d_name[j]);
                     }
@@ -149,10 +151,10 @@ int customerSize()
     {
         while ((dir = readdir(di)) != NULL)
         {
-           //int a = strlen(dir->d_name); // file name+extension
-            if(dir->d_namlen >= 4)
+           int a = strlen(dir->d_name); // file name+extension
+            if(a >= 4)
             {
-                if (dir->d_name[dir->d_namlen-1] == 'v' && dir->d_name[dir->d_namlen-2] == 'n' && dir->d_name[dir->d_namlen-3] == 'i' && dir->d_name[dir->d_namlen-4] == '.')
+                if (dir->d_name[a-1] == 'v' && dir->d_name[a-2] == 'n' && dir->d_name[a-3] == 'i' && dir->d_name[a-4] == '.')
                 {
                    i++;
                 }
@@ -176,9 +178,10 @@ void showInvoice(int list)
     {
         while ((dir = readdir(di)) != NULL)
         {
-            if(dir->d_namlen >= 4)
+             int a = strlen(dir->d_name); // file name+extension
+            if(a >= 4)
             {
-                if (dir->d_name[dir->d_namlen-1] == 'v' && dir->d_name[dir->d_namlen-2] == 'n' && dir->d_name[dir->d_namlen-3] == 'i' && dir->d_name[dir->d_namlen-4] == '.')
+                if (dir->d_name[a-1] == 'v' && dir->d_name[a-2] == 'n' && dir->d_name[a-3] == 'i' && dir->d_name[a-4] == '.')
                 {
                     if(list == i)
                     {

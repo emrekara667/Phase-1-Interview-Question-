@@ -4,11 +4,12 @@
 #include <unistd.h>
 #endif
 
+#include <curses.h>
 #include "sqlite3.h"
 #include "appUser.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+//#include <conio.h>
 #include <string.h>
 
 int validadation(char *id,char *Password,char *name)
