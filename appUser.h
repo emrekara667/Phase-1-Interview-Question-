@@ -1,5 +1,7 @@
 #ifndef APPUSER_H_INCLUDED
 #define APPUSER_H_INCLUDED
+
+
 /*
 This function checks if username and id match.
 And If the user logs in, it will stamp the login time.
@@ -13,6 +15,9 @@ int validadation(char *,char*,char*);
 This function stamps the output time.
 */
 int setLogoutTime();
+
+
+
 
 #endif
 

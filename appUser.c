@@ -1,16 +1,20 @@
 #ifdef _WIN32
-#include <Windows.h>
+#include <windows.h>
 #else
 #include <unistd.h>
+#define Sleep(x) usleep((x)*1000)
 #endif
 
-#include <curses.h>
+
 #include "sqlite3.h"
 #include "appUser.h"
 #include <stdio.h>
 #include <stdlib.h>
-//#include <conio.h>
+#include <conio.h>
 #include <string.h>
+
+
+
 
 int validadation(char *id,char *Password,char *name)
  {

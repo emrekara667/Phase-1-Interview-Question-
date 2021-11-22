@@ -1,10 +1,18 @@
 #ifdef _WIN32
-#include <Windows.h>
+#include <windows.h>
 #else
 #include <unistd.h>
+#define Sleep(x) usleep((x)*1000)
 #endif
 
-#include <curses.h>
+#ifdef _WIN32
+#include <conio.h>
+#else
+#include <curses.h
+#endif
+
+
+
 #include "appInvoice.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,9 +34,9 @@ void contentDisplay()
     di = opendir("."); //specify the directory name
     if (di)
     {
-         int a = strlen(dir->d_name); // file name+extension
         while ((dir = readdir(di)) != NULL)
         {
+            int a = strlen(dir->d_name); // file name+extension
             if(a >= 4)
             {
                 if (dir->d_name[a-1] == 'v' && dir->d_name[a-2] == 'n' && dir->d_name[a-3] == 'i' && dir->d_name[a-4] == '.')
@@ -178,7 +186,7 @@ void showInvoice(int list)
     {
         while ((dir = readdir(di)) != NULL)
         {
-             int a = strlen(dir->d_name); // file name+extension
+            int a = strlen(dir->d_name); // file name+extension
             if(a >= 4)
             {
                 if (dir->d_name[a-1] == 'v' && dir->d_name[a-2] == 'n' && dir->d_name[a-3] == 'i' && dir->d_name[a-4] == '.')
@@ -250,3 +258,6 @@ void showInvoiceList()
     system("cls");
     //printf("break on");
 }
+
+
+
