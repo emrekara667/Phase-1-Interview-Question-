@@ -1,3 +1,9 @@
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+
 #include "appInvoice.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -220,11 +226,11 @@ void showInvoiceList()
             if(fileNu  <= customerSize() && fileNu > 0)
             {
                 showInvoice(fileNu);
-                sleep(4);
+                Sleep(4000);
             }
             else{
                 printf("record not found\n");
-                sleep(2);
+                sleep(2000);
             }
             memset(input, 0, strlen(input));
             system("cls");

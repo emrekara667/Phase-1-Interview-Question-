@@ -1,3 +1,9 @@
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+
 #include "sqlite3.h"
 #include "appUser.h"
 #include <stdio.h>
@@ -71,7 +77,7 @@ int validadation(char *id,char *Password,char *name)
     }
     else{
         printf("Login Failed\n");
-        sleep(2);
+        Sleep(2000);
         system("cls");
         return 2;       // User not found
     }
